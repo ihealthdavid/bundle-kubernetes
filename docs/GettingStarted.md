@@ -25,12 +25,16 @@ to provide your AWS credentials so Juju can manage your services on AWS for you.
 
     juju quickstart
 
-This will give you an ncurses interface.
+Select `new Amazon EC2 environment` from the ncurses interface and fill in the
+following fields:  
 
-- Select `new Amazon EC2 environment`
 - Type "amazon" in the environment name field.
 - Copy and paste your AWS access key.
-- Copy and paste your secret key.
-- Select the nearest region to your location.
+- Copy and paste your AWS secret key.
+- Optional select the nearest region to your location.
+- The 'admin secret' is the password you will use to log in to the Juju GUI.
 - Make this the default environment.
-- Select `save` to write the changes to your environments.yaml file.
+- Select `save` and `use` to write the changes to your environments.yaml file.
+
+Quickstart will start a node using your Amazon credentials for the bootstrap
+node.  
