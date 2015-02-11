@@ -1,6 +1,4 @@
 .bzr
 .bzrignore
 .vendor-rc
-*~
-/kubecharm.egg-info/
-*.pyc
+_site
