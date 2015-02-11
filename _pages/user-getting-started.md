@@ -76,9 +76,9 @@ kubernetes-master unit and use the kubectl command to interact with the system.
     juju ssh kuberenetes-master/0
 
 You can follow the
-(GuestBook)[https://github.com/GoogleCloudPlatform/kubernetes/blob/master/examples/guestbook/README.md]
+[GuestBook](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/examples/guestbook/README.md)
 example application instructions.  Please note that the Kubernetes software
-has been installed in the '/opt/kubernetes' directory.
+has been installed in the `/opt/kubernetes` directory.
 
 The example application calls for using the `gcloud` tool to open ports.  In
 this case we will use Juju to open the any ports needed.
