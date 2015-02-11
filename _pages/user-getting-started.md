@@ -29,7 +29,7 @@ your local system type the following in a terminal:
 This process requires that you have an Amazon Web Services account.  You will
 to provide your AWS credentials so Juju can manage your services on AWS for you.
 
-    juju quickstart https://raw.githubusercontent.com/whitmo/bundle-kubernetes/master/bundles.yaml
+    juju quickstart https://raw.githubusercontent.com/{{ site.repository }}/master/bundles.yaml
 
 Select `new Amazon EC2 environment` from the ncurses interface and fill in the
 following fields:  

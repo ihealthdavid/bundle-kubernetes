@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Juju Terms Glossary
+title: Glossary
 category: User Docs
-permalink: /user/juju-glossary.html
+permalink: /user/glossary.html
 ---
 
 ##### Juju
