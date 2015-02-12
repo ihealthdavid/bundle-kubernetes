@@ -13,17 +13,17 @@ model.
 If you are new to Juju, it may be helpful to begin with the Documentation for
 Juju, hosted at [juju.ubuntu.com/docs](http://juju.ubuntu.com/docs)
 
-#### Juju User Documentation
+#### User Documentation
 
-<ul class="col-sm-6 col-md-4 ">
+<ul>
 {% for link in site.data.jujucharms_usernav %}
     <p><a href="{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></p>
 {% endfor %}
 </ul>
 
-#### Juju Developer Documentation
+#### Developer Documentation
 
-<ul class="col-sm-6 col-md-4 ">
+<ul>
 {% for link in site.data.jujucharms_devnav %}
     <p><a href="{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></p>
 {% endfor %}
