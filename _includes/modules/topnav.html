@@ -14,7 +14,7 @@
                 <ul class="nav navbar-nav">
                   <li class="dropdown yamm-fw"><a href="{{ site.url }}" class="active">Home</a></li>
                 {% for link in site.data.topnav %}
-                  <li><a href="{{ link.url }}">{{ link.title }}</a></li> 
+                  <li><a href="{{ site.url }}/{{ link.url }}">{{ link.title }}</a></li> 
                 {% endfor %}
                 </ul>
 
