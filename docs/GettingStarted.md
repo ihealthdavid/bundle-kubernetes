@@ -30,7 +30,7 @@ your local system type the following in a terminal:
 This process requires that you have an Amazon Web Services account.  You will
 to provide your AWS credentials so Juju can manage your services on AWS for you.
 
-    juju quickstart https://raw.githubusercontent.com/bundle-kubernetes/master/bundles.yaml
+    juju quickstart https://raw.githubusercontent.com/whitmo/bundle-kubernetes/master/bundles.yaml
 
 Select `new Amazon EC2 environment` from the ncurses interface and fill in the
 following fields:  
@@ -69,10 +69,12 @@ You will see the Kubernetes charms on the Juju GUI. The VMs are booting,
 installing software and creating relations between systems.  This may take a
 few minutes to get the full environment stood up.
 
+![](images/kubernetes-bundle-juju-gui.png)
+
 ## Start using Kubernetes
 
 Now that Kubernetes fully deployed, you can follow the [GuestBook
-example](guestbook-how-to.html)
+example](Guestbook-how-to.md)
 application instructions that start an application. Please note that the 
 Kubernetes software has been installed in the '/opt/kubernetes' directory
 of the kubernetes-master unit.

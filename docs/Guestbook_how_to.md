@@ -20,7 +20,7 @@ orchestrated with Juju.
 
 This example assumes that you have a basic understanding of Kubernetes services
 and that you have 
-[setup the Kubernetes environment using Juju](GettingStarted.html).  The Juju 
+[setup the Kubernetes environment using Juju](GettingStarted.md).  The Juju 
 charms clone the kubernetes repository along with installing the binaries on 
 the kubernetes and kubernetes-master units.
 
