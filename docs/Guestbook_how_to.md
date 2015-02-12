@@ -12,7 +12,7 @@ This example shows how to build a simple multi-tier web application using Kubern
 The example combines a web frontend, a redis master for storage and a replicated set of redis slaves.
 
 This document was adopted from the Kubernetes 
-(Guestbook README)[https://github.com/GoogleCloudPlatform/kubernetes/blob/master/examples/guestbook/README.md]
+[Guestbook README](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/examples/guestbook/README.md)
 becuase the commands are slightly different when using an environment 
 orchestrated with Juju.
 
@@ -349,7 +349,7 @@ $ exit
 To play with Guestbook itself, grab the external address of the kubernetes 
 minions from the `juju status` tool.
 ```shell
-$ juju status kubernetes 
+me@workstation$ juju status kubernetes 
 ```
 
 You will need to open the firewall for port 8000.  Juju handles the firewalls
@@ -358,7 +358,7 @@ command. The following command will allow traffic from any source to instances
 tagged `kubernetes-minion`:
 
 ```shell
-$ juju run --services kubernetes 'open-port 8000'
+me@workstation$ juju run --services kubernetes 'open-port 8000'
 ```
 
 Now you can just visit http://*KUBERNETES-PUBLIC-ADDRESS*:8000 to use the
