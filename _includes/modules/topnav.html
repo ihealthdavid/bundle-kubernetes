@@ -13,52 +13,9 @@
               <div id="navbar-collapse-1" class="navbar-collapse collapse pull-right">
                 <ul class="nav navbar-nav">
                   <li class="dropdown yamm-fw"><a href="{{ site.url }}" class="active">Home</a></li>
-                  <li class="dropdown yamm-fw"> <a href="#" data-toggle="dropdown" class="dropdown-toggle">Juju Charms</a>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <div class="yamm-content">
-                          <div class="row">
-
-                            <ul class="col-sm-6 col-md-4 list-unstyled two">
-                              <li>
-                                <p>Juju Solutions</p>
-                              </li>
-                              {% for link in site.data.jujucharms_solutionnav %}
-                              <li><a href="{{ link.url }}"><i class="fa fa-angle-right"></i>{{ link.title }}</a></li>
-                              {% endfor %}
-                            </ul>
-
-                            <ul class="col-sm-6 col-md-4 list-unstyled two">
-                              <li>
-                                <p>User Documentation</p>
-                              </li>
-                              {% for link in site.data.jujucharms_usernav %}
-                                <li><a href="{{ link.url }}"><i class="fa fa-angle-right"></i>{{ link.title }}</a></li>
-                              {% endfor %}
-                            </ul>
-
-                            <ul class="col-sm-6 col-md-4 list-unstyled two">
-                              <li>
-                                <p>Developer Documentation</p>
-                              </li>
-                              {% for link in site.data.jujucharms_devnav %}
-                                <li><a href="{{ link.url }}"><i class="fa fa-angle-right"></i>{{ link.title }}</a></li>
-                              {% endfor %}
-                            </ul>
-
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">{{ site.product }}</a>
-                    <ul class="dropdown-menu" role="menu">
-                      {% for link in site.data.product_nav %}
-                        <li><a href="{{ link.url }}"><i class="fa fa-angle-right"></i>{{ link.title }}</a></li>
-                      {% endfor %}
-                    </ul>
-                  </li>
+                {% for link in site.data.topnav %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li> 
+                {% endfor %}
                 </ul>
 
               </div>
