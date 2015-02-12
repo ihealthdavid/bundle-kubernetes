@@ -74,10 +74,11 @@ few minutes to get the full environment stood up.
 ## Start using Kubernetes
 
 Now that Kubernetes fully deployed, you can follow the [GuestBook
-example](Guestbook-how-to.md)
-application instructions that start an application. Please note that the 
-Kubernetes software has been installed in the '/opt/kubernetes' directory
-of the kubernetes-master unit.
+example](Guestbook_how_to.md)
+instructions that start an application in Kubernetes. Juju has done the 
+work of provisioning the virtual machines, and the charms install and 
+configure the Kubernetes software.  You should be able to run through the 
+Guestbook example and get a working application.
 
 ![](images/guestbook.png)
 
