@@ -8,5 +8,5 @@ keywords: juju deploy kubernetes, juju kubernetes, kubernetes bundle, kubernetes
 analytics_id: UA-51016932-4
 repository: whitmo/bundle-kubernetes
 forkme_enabled: true
-url: http://chuckbutler.github.io/bundle-kubernetes/
+url: http://whitmo.github.io/bundle-kubernetes/
 #url: http://localhost:4000
