@@ -1,0 +1,15 @@
+- title: Services FAQ
+  url: https://github.com/GoogleCloudPlatform/kubernetes/wiki/Services-FAQ
+
+- title: Development Guide
+  url: https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/devel/development.md
+
+- title: Pull Request Process
+  url: https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/devel/pull-requests.md)
+
+- title: Releasing Kubernetes
+  url: https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/devel/releasing.md
+
+- title: Kubernetes Wiki
+  url: https://github.com/GoogleCloudPlatform/kubernetes/wiki
+

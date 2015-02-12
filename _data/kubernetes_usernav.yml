@@ -1,0 +1,16 @@
+- title: Getting started
+  url: https://jujucharms.com/docs/authors-intro
+
+- title: User FAQ
+  url: https://github.com/GoogleCloudPlatform/kubernetes/wiki/User-FAQ
+
+- title: Pods
+  url: https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/pods.md
+
+- title: Replication Controllers
+  url: https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/replication-controller.md
+
+- title: Services
+  url: https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/services.md
+
+

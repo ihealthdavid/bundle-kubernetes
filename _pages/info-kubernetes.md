@@ -9,25 +9,22 @@ Kubernetes is an open source system for managing containerized applications
 across multiple hosts, providing basic mechanisms for deployment, maintenance,
 and scaling of applications.
 
+
+
+
 #### User Documentation
 
-- [User FAQ](https://github.com/GoogleCloudPlatform/kubernetes/wiki/User-FAQ)
-- [Pods](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/pods.md)
-- [Replication Controllers](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/replication-controller.md)
-- [Services](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/services.md)
-
-#### Service Documentation
-
-- [Service FAQ](https://github.com/GoogleCloudPlatform/kubernetes/wiki/Services-FAQ)
+<ul>
+{% for link in site.data.kubernetes_usernav %}
+    <p><a href="{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></p>
+{% endfor %}
+</ul>
 
 
 #### Developer Documentation
+<ul>
+{% for link in site.data.kubernetes_devnav %}
+    <p><a href="{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></p>
+{% endfor %}
+</ul>
 
-- [Services FAQ](https://github.com/GoogleCloudPlatform/kubernetes/wiki/Services-FAQ)
-- [Development Guide](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/devel/development.md)
-- [Pull Request Process](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/devel/pull-requests.md)
-- [Releasing Kubernetes](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/devel/releasing.md)
-
-#### Wiki
-
-- [Kubernetes Wiki](https://github.com/GoogleCloudPlatform/kubernetes/wiki)
