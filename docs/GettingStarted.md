@@ -33,59 +33,59 @@ to provide your AWS credentials so Juju can manage your services on AWS for you.
     juju quickstart https://raw.githubusercontent.com/whitmo/bundle-kubernetes/master/bundles.yaml
 
 Select `new Amazon EC2 environment` from the ncurses interface and fill in the
-following fields:  
+following fields:
 
 - Type "amazon" in the environment name field.
 - The 'admin secret' is the password you will use to log in to the Juju GUI.
 
-![](images/quickstart1.png)
+![juju quickstart](images/quickstart1.png)
 
 - Copy and paste your AWS access key.
 - Copy and paste your AWS secret key.
 
-![](images/quickstart2.png)
+![juju quickstart](images/quickstart2.png)
 
 - Make this the default environment.
 - Select `save` and `use` to write the changes to your environments.yaml file.
 
-![](images/quickstart3.png)
+![juju quickstart](images/quickstart3.png)
 
 
 The Juju client using Secure Shell (SSH) to intereact with the servers in the
 cloud.  Quickstart will prompt you to create SSH keys if you do not already
 have keys on this system.
 
-The bootstrap process will create a virtual machine that Juju will use for
-orchestration.  Quickstart will also deploy the Juju Graphical User Interface
-(GUI) to the bootstrap node.
+The bootstrap process will create a virtual machine that Juju will use
+for orchestration.  Quickstart will also deploy the Juju Graphical
+User Interface (GUI) to the bootstrap node.
 
-If your system is configured with a default browser, Quickstart will open it to
-the Juju GUI.  Since the certificate is self signed you may need to add an
-exception for the certificate in the browser.  Quickstart will log you in to
-the Juju GUI presenting you with a welcome screen, click the "Get started"
-button to dismiss the dialog.
+If your system is configured with a default browser, Quickstart will
+open it to the Juju GUI.  Since the certificate is self signed you may
+need to add an exception for the certificate in the browser.
+Quickstart will log you in to the Juju GUI presenting you with a
+welcome screen, click the "Get started" button to dismiss the dialog.
 
 You will see the Kubernetes charms on the Juju GUI. The VMs are booting,
 installing software and creating relations between systems.  This may take a
 few minutes to get the full environment stood up.
 
-![](images/kubernetes-bundle-juju-gui.png)
+![juju gui](images/kubernetes-bundle-juju-gui.png)
 
 ## Start using Kubernetes
 
-Now that Kubernetes fully deployed, you can follow the [GuestBook
-example](Guestbook_how_to.md)
-instructions that start an application in Kubernetes. Juju has done the 
-work of provisioning the virtual machines, and the charms install and 
-configure the Kubernetes software.  You should be able to run through the 
-Guestbook example and get a working application.
+Now that Kubernetes fully deployed, you can follow the
+[GuestBook example](Guestbook_how_to.md) instructions that start an
+application in Kubernetes. Juju has done the work of provisioning the
+virtual machines, and the charms install and configure the Kubernetes
+software.  You should be able to run through the Guestbook example and
+get a working application.
 
-![](images/guestbook.png)
+![kubernetes guestbook example](images/guestbook.png)
 
 # Destroy environment
 
-Once you are done using Kubernetes on the cloud use Juju to bring down 
-Kubernetes on cloud environment you are using.  
+Once you are done using Kubernetes on the cloud use Juju to bring down
+Kubernetes on cloud environment you are using.
 
     juju destroy-environment amazon
 
