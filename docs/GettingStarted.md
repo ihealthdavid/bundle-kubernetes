@@ -1,3 +1,11 @@
+---
+layout: default
+title: Getting Started
+category: User Docs
+permalink: /user/getting-started.html
+
+---
+
 # How to use this bundle
 
 You have downloaded this bundle and are thinking to yourself:
@@ -28,11 +36,20 @@ Select `new Amazon EC2 environment` from the ncurses interface and fill in the
 following fields:  
 
 - Type "amazon" in the environment name field.
+- The 'admin secret' is the password you will use to log in to the Juju GUI.
+
+![](images/quickstart1.png)
+
 - Copy and paste your AWS access key.
 - Copy and paste your AWS secret key.
-- The 'admin secret' is the password you will use to log in to the Juju GUI.
+
+![](images/quickstart2.png)
+
 - Make this the default environment.
 - Select `save` and `use` to write the changes to your environments.yaml file.
+
+![](images/quickstart3.png)
+
 
 The Juju client using Secure Shell (SSH) to intereact with the servers in the
 cloud.  Quickstart will prompt you to create SSH keys if you do not already
@@ -52,22 +69,24 @@ You will see the Kubernetes charms on the Juju GUI. The VMs are booting,
 installing software and creating relations between systems.  This may take a
 few minutes to get the full environment stood up.
 
+![](images/kubernetes-bundle-juju-gui.png)
+
 ## Start using Kubernetes
 
-Now that you have Kubernetes fully deployed, you can ssh to the
-kubernetes-master unit and use the kubectl command to interact with the system.
+Now that Kubernetes fully deployed, you can follow the [GuestBook
+example](Guestbook-how-to.md)
+application instructions that start an application. Please note that the 
+Kubernetes software has been installed in the '/opt/kubernetes' directory
+of the kubernetes-master unit.
 
-    juju ssh kuberenetes-master/0
+![](images/guestbook.png)
 
-You can follow the
-(GuestBook)[https://github.com/GoogleCloudPlatform/kubernetes/blob/master/examples/guestbook/README.md]
-example application instructions.  Please note that the Kubernetes software
-has been installed in the '/opt/kubernetes' directory.
+# Destroy environment
 
-The example application calls for using the `gcloud` tool to open ports.  In
-this case we will use Juju to open the any ports needed.
+Once you are done using Kubernetes on the cloud use Juju to bring down 
+Kubernetes on cloud environment you are using.  
 
-For example, if there is a need to open firewall port 8000 on the Kuberentes
-minions use `juju run` to accomplish the same outcome:
+    juju destroy-environment amazon
 
-    juju run --services kubernetes 'open-port 8000'
+This command will terminate the cloud virtual machines that are running
+Kubernetes, including the machine for the Juju bootstrap node.
