@@ -1,5 +1,7 @@
 - title: Interfaces
   url: dev/interfaces.html
+- title: Testing the Kubernetes Bundle
+  url: dev/continuous-integration.html
 - title: Contributing
   url: dev/contributing.html
 
