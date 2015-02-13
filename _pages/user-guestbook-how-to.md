@@ -39,7 +39,7 @@ $ cd /opt/kubernetes
 Use the file `examples/guestbook/redis-master.json` which describes a
 single pod running a redis key-value server in a container:
 
-{% highlight js %}
+{% highlight javascript %}
 {
   "id": "redis-master",
   "kind": "Pod",
@@ -117,7 +117,7 @@ The pod that you created in Step One has the label
 which pods will receive the traffic sent to the service. Use the file
 `examples/guestbook/redis-master-service.json`:
 
-{% highlight js %}
+{% highlight javascript %}
 {
   "id": "redis-master",
   "kind": "Service",
@@ -161,7 +161,7 @@ responsible for managing multiple instances of a replicated pod.
 
 Use the file `examples/guestbook/redis-slave-controller.json`:
 
-{% highlight js %}
+{% highlight javascript %}
 {
   "id": "redis-slave-controller",
   "kind": "ReplicationController",
@@ -237,7 +237,7 @@ service provides transparent load balancing to clients. The service
 specification for the slaves is in
 `examples/guestbook/redis-slave-service.json`:
 
-{% highlight js %}
+{% highlight javascript %}
 {
   "id": "redisslave",
   "kind": "Service",
@@ -286,7 +286,7 @@ service instantiated by a replication controller.
 The pod is described in the file
 `examples/guestbook/frontend-controller.json`:
 
-{% highlight js %}
+{% highlight javascript %}
 {
   "id": "frontend-controller",
   "kind": "ReplicationController",
@@ -349,7 +349,7 @@ You will see a single redis master pod, two redis slaves, and three frontend pod
 The code for the PHP service looks like this:
 
 {% highlight php %}
-<?
+<?php
 
 set_include_path('.:/usr/share/php:/usr/share/pear:/vendor/predis');
 
