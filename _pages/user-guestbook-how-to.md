@@ -29,17 +29,17 @@ binaries on the kubernetes and kubernetes-master units.
 From the Juju client ssh to the kubernetes-master unit and change to
 the kubernetes directory:
 
-```shell
+{% highlight bash %}
 me@workstation$ juju ssh kubernetes-master/0
 $ cd /opt/kubernetes
-```
+{% endhighlight %}
 
 ### Step One: Turn up the redis master
 
 Use the file `examples/guestbook/redis-master.json` which describes a
 single pod running a redis key-value server in a container:
 
-```js
+{% highlight js %}
 {
   "id": "redis-master",
   "kind": "Pod",
@@ -63,37 +63,38 @@ single pod running a redis key-value server in a container:
     "name": "redis-master"
   }
 }
-```
+{% endhighlight %}
 
 Create the redis pod in your Kubernetes cluster by running:
 
-```shell
+{% highlight bash %}
 $ kubectl create -f examples/guestbook/redis-master.json
-```
+{% endhighlight %}
 
 Once that's up you can list the pods in the cluster, to verify that
 the master is running:
 
-```shell
+{% highlight bash %}
 $ kubectl get pods
-```
+{% endhighlight %}
 
 You'll see a single redis master pod. It will also display the machine
 that the pod is running on once it gets placed (may take up to thirty
 seconds):
 
-```
+{% highlight bash %}
 NAME                IMAGE(S)            HOST                                                       LABELS              STATUS
 redis-master        dockerfile/redis    kubernetes-minion-2.c.myproject.internal/130.211.156.189   name=redis-master   Running
-```
+{% endhighlight %}
+
 
 You run `docker ps` on the kubernetes minon unit to see the actual pod:
 
-```shell
+{% highlight bash %}
 me@workstation$ juju run --unit kubernetes/0 'docker ps'
 CONTAINER ID  IMAGE                     COMMAND                CREATED         STATUS        PORTS     NAMES
 e3eed3e5e6d1  dockerfile/redis:latest   "redis-server /etc/re  2 minutes ago   Up 2 minutes            k8s_master.9c0a9146_redis-master.etcd_6296f4bd-70fa-11e4-8469-0800279696e1_45331ebc
-```
+{% endhighlight %}
 
 (Note that initial `docker pull` may take a few minutes, depending on
 network conditions.  During this time, the `get pods` command will
@@ -116,7 +117,7 @@ The pod that you created in Step One has the label
 which pods will receive the traffic sent to the service. Use the file
 `examples/guestbook/redis-master-service.json`:
 
-```js
+{% highlight js %}
 {
   "id": "redis-master",
   "kind": "Service",
@@ -130,11 +131,11 @@ which pods will receive the traffic sent to the service. Use the file
     "name": "redis-master"
   }
 }
-```
+{% endhighlight %}
 
 to create the service by running:
 
-```shell
+{% highlight bash %}
 $ kubectl create -f examples/guestbook/redis-master-service.json
 redis-master
 
@@ -143,7 +144,7 @@ NAME                LABELS              SELECTOR                                
 kubernetes          <none>              component=apiserver,provider=kubernetes   10.0.29.11          443
 kubernetes-ro       <none>              component=apiserver,provider=kubernetes   10.0.141.25         80
 redis-master        name=redis-master   name=redis-master                         10.0.16.143         6379
-```
+{% endhighlight %}
 
 
 This will cause all pods to see the redis master apparently running on
@@ -160,7 +161,7 @@ responsible for managing multiple instances of a replicated pod.
 
 Use the file `examples/guestbook/redis-slave-controller.json`:
 
-```js
+{% highlight js %}
 {
   "id": "redis-slave-controller",
   "kind": "ReplicationController",
@@ -188,26 +189,26 @@ Use the file `examples/guestbook/redis-slave-controller.json`:
       }},
   "labels": {"name": "redisslave"}
 }
-```
+{% endhighlight %}
 
 to create the replication controller by running:
 
-```shell
+{% highlight bash %}
 $ kubectl create -f examples/guestbook/redis-slave-controller.json
 redis-slave-controller
 
 $ kubectl get replicationcontrollers
 NAME                    IMAGE(S)                   SELECTOR            REPLICAS
 redis-slave-controller  brendanburns/redis-slave   name=redisslave     2
-```
+{% endhighlight %}
 
 The redis slave configures itself by looking for the Kubernetes
 service environment variables in the container environment. In
 particular, the redis slave is started with the following command:
 
-```shell
+{% highlight bash %}
 redis-server --slaveof ${REDIS_MASTER_SERVICE_HOST:-$SERVICE_HOST} $REDIS_MASTER_SERVICE_PORT
-```
+{% endhighlight %}
 
 You might be curious about where the *REDIS_MASTER_SERVICE_HOST* is
 coming from.  It is provided to this container when it is launched via
@@ -218,13 +219,13 @@ environment variable names in the documentation linked above).
 Once that's up you can list the pods in the cluster, to verify that
 the master and slaves are running:
 
-```shell
+{% highlight bash %}
 $ kubectl get pods
 NAME                                   IMAGE(S)                   HOST                                                        LABELS                              STATUS
 redis-master                           dockerfile/redis           kubernetes-minion-2.c.myproject.internal/130.211.156.189    name=redis-master                   Running
 ee68394b-7fca-11e4-a220-42010af0a5f1   brendanburns/redis-slave   kubernetes-minion-3.c.myproject.internal/130.211.179.212    name=redisslave,uses=redis-master   Running
 ee694768-7fca-11e4-a220-42010af0a5f1   brendanburns/redis-slave   kubernetes-minion-4.c.myproject.internal/130.211.168.210    name=redisslave,uses=redis-master   Running
-```
+{% endhighlight %}
 
 You will see a single redis master pod and two redis slave pods.
 
@@ -236,7 +237,7 @@ service provides transparent load balancing to clients. The service
 specification for the slaves is in
 `examples/guestbook/redis-slave-service.json`:
 
-```js
+{% highlight js %}
 {
   "id": "redisslave",
   "kind": "Service",
@@ -250,7 +251,7 @@ specification for the slaves is in
     "name": "redisslave"
   }
 }
-```
+{% endhighlight %}
 
 This time the selector for the service is `name=redisslave`, because
 that identifies the pods running redis slaves. It may also be helpful
@@ -261,7 +262,7 @@ command.
 Now that you have created the service specification, create it in your
 cluster by running:
 
-```shell
+{% highlight bash %}
 $ kubectl create -f examples/guestbook/redis-slave-service.json
 redisslave
 
@@ -272,7 +273,7 @@ kubernetes          <none>              component=apiserver,provider=kubernetes 
 kubernetes-ro       <none>              component=apiserver,provider=kubernetes   10.0.141.25         80
 redis-master        name=redis-master   name=redis-master                         10.0.16.143         6379
 redisslave          name=redisslave     name=redisslave                           10.0.217.148        6379
-```
+{% endhighlight %}
 
 ### Step Five: Create the frontend pod
 
@@ -285,7 +286,7 @@ service instantiated by a replication controller.
 The pod is described in the file
 `examples/guestbook/frontend-controller.json`:
 
-```js
+{% highlight js %}
 {
   "id": "frontend-controller",
   "kind": "ReplicationController",
@@ -314,11 +315,11 @@ The pod is described in the file
       }},
   "labels": {"name": "frontend"}
 }
-```
+{% endhighlight %}
 
 Using this file, you can turn up your frontend with:
 
-```shell
+{% highlight bash %}
 $ kubectl create -f examples/guestbook/frontend-controller.json
 frontend-controller
 
@@ -326,13 +327,13 @@ $ kubectl get replicationcontrollers
 NAME                    IMAGE(S)                                   SELECTOR            REPLICAS
 redis-slave-controller  brendanburns/redis-slave                   name=redisslave     2
 frontend-controller     kubernetes/example-guestbook-php-redis     name=frontend       3
-```
+{% endhighlight %}
 
 Once that's up (it may take ten to thirty seconds to create the pods)
 you can list the pods in the cluster, to verify that the master,
 slaves and frontends are running:
 
-```shell
+{% highlight bash %}
 $ kubectl get pods
 NAME                                   IMAGE(S)                                   HOST                                                       LABELS                                       STATUS
 redis-master                           dockerfile/redis                           kubernetes-minion-2.c.myproject.internal/130.211.156.189   name=redis-master                            Running
@@ -341,13 +342,13 @@ ee694768-7fca-11e4-a220-42010af0a5f1   brendanburns/redis-slave                 
 9fbad0d6-7fcb-11e4-a220-42010af0a5f1   kubernetes/example-guestbook-php-redis     kubernetes-minion-1.c.myproject.internal/130.211.185.78    name=frontend,uses=redisslave,redis-master   Running
 9fbbf70e-7fcb-11e4-a220-42010af0a5f1   kubernetes/example-guestbook-php-redis     kubernetes-minion-2.c.myproject.internal/130.211.156.189   name=frontend,uses=redisslave,redis-master   Running
 9fbdbeca-7fcb-11e4-a220-42010af0a5f1   kubernetes/example-guestbook-php-redis     kubernetes-minion-4.c.myproject.internal/130.211.168.210   name=frontend,uses=redisslave,redis-master   Running
-```
+{% endhighlight %}
 
 You will see a single redis master pod, two redis slaves, and three frontend pods.
 
 The code for the PHP service looks like this:
 
-```php
+{% highlight php %}
 <?
 
 set_include_path('.:/usr/share/php:/usr/share/pear:/vendor/predis');
@@ -385,29 +386,29 @@ if (isset($_GET['cmd']) === true) {
 } else {
   phpinfo();
 } ?>
-```
+{% endhighlight %}
 At this point you can exit out of the ssh session with Kubernetes master unit
 to get back to the Juju client.
 
-```shell
+{% highlight bash %}
 $ exit
-```
+{% endhighlight %}
 
 To play with Guestbook itself, grab the external address of the
 kubernetes minions from the `juju status` tool.
 
-```shell
+{% highlight bash %}
 me@workstation$ juju status kubernetes
-```
+{% endhighlight %}
 
 You will need to open the firewall for port 8000.  Juju handles the
 firewalls on the cloud environments, you can open a port by using the
 `juju run` command. The following command will allow traffic from any
 source to instances tagged `kubernetes-minion`:
 
-```shell
+{% highlight bash %}
 me@workstation$ juju run --services kubernetes 'open-port 8000'
-```
+{% endhighlight %}
 
 Now you can just visit http://*KUBERNETES-PUBLIC-ADDRESS*:8000 to use
 the Guestbook application.
