@@ -50,7 +50,7 @@ Good tests shoudl evalute the following:
 We are not Kubneretes experts. Our current tests may not be the best way to 
 test/stress a Kubernetes cluster. If you have some ideas for better tests we
 would love to hear from you!  Please contribute an
-[issue](http://github.com/{{site.repository}/issues) or check
+[issue](http://github.com/{{site.repository}}/issues) or check
 out our [contributing guide](contributing.html).
 
 
