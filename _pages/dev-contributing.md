@@ -39,7 +39,7 @@ We use the Fork &amp; Pull model for distributed development. For a more in-dept
 The following checklist will help developers not familiar with the fork and pull process of development. We appreciate your enthusiasm to make the Docker Charm a High Quality experience! To Rapidly get started - follow the 8 steps below.
 
 1. [Fork the repository](https://help.github.com/articles/fork-a-repo/)
-2. Clone your fork `git clone git@github.com/myusername/kubrick-documentation-scaffolding.git`
+2. Clone your fork `git clone git@github.com/myusername/kubernetes-bundle.git`
 3. Checkout your topic branch with `git checkout -b my-awesome-bugfix`
 4. Hack away at your feature/bugfix
 5. Validate your bugfix if possible in the amulet test(s) so we dont reintroduce it later.
@@ -64,7 +64,7 @@ The documentation is a static site generated from markdown in the `gh-pages` bra
 
 
 1. [Fork the repository](https://help.github.com/articles/fork-a-repo/)
-2. Clone your fork `git clone git@github.com/myusername/kubrick-documentation-scaffolding.git`
+2. Clone your fork `git clone git@github.com/myusername/kubernetes-bundle.git`
 3. Checkout the docs topic branch `git checkout gh-pages`
 4. checkout a branch from the docs topic branch that is descriptive of your work `git checkout -b french-localization`
 5. Hack away at your feature/bugfix
