@@ -2,3 +2,4 @@
 .bzrignore
 .vendor-rc
 _site
+*~
