@@ -1,11 +1,3 @@
----
-layout: default
-title: Getting Started
-category: User Docs
-permalink: /user/getting-started.html
-
----
-
 # How to use this bundle
 
 You have downloaded this bundle and are thinking to yourself: *How do
@@ -41,18 +33,18 @@ fill in the following fields:
 - The 'admin secret' is the password you will use to log in to the
   Juju GUI.
 
-![juju quickstart](images/quickstart1.png)
+![juju quickstart1](images/quickstart1.png)
 
 - Copy and paste your AWS access key.
 - Copy and paste your AWS secret key.
 
-![juju quickstart](images/quickstart2.png)
+![juju quickstart2](images/quickstart2.png)
 
 - Make this the default environment.
 - Select `save` and `use` to write the changes to your
   environments.yaml file.
 
-![juju quickstart](images/quickstart3.png)
+![juju quickstart3](images/quickstart3.png)
 
 The Juju client using Secure Shell (SSH) to intereact with the servers
 in the cloud.  Quickstart will prompt you to create SSH keys if you do
@@ -88,10 +80,10 @@ get a working application.
 
 # Destroy environment
 
-Once you are done using Kubernetes on the cloud use Juju to bring down
-Kubernetes on cloud environment you are using.
+Once you are done using Kubernetes on the cloud use Juju to stop
+the servers.
 
     juju destroy-environment amazon
 
-This command will terminate the cloud virtual machines that are running
-Kubernetes, including the machine for the Juju bootstrap node.
+This command will terminate the virtual machines cloud that are running
+Kubernetes, including the machine used for the Juju bootstrap node.

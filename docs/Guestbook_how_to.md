@@ -1,10 +1,3 @@
----
-layout: default
-title: GuestBook example
-permalink: /user/guestbook-how-to.html
-
----
-
 ## GuestBook example
 
 This example shows how to build a simple multi-tier web application
@@ -22,15 +15,15 @@ orchestrated with Juju.
 
 This example assumes that you have a basic understanding of Kubernetes
 services and that you have
-[setup the Kubernetes environment using Juju](GettingStarted.md).  The
-Juju charms clone the kubernetes repository along with installing the
+[setup the Kubernetes environment using Juju](GettingStarted.md).
+The Juju charms clone the kubernetes repository along with installing the
 binaries on the kubernetes and kubernetes-master units.
 
 From the Juju client ssh to the kubernetes-master unit and change to
 the kubernetes directory:
 
 ```shell
-$ juju ssh kubernetes-master/0
+me@workstation$ juju ssh kubernetes-master/0
 $ cd /opt/kubernetes
 ```
 
