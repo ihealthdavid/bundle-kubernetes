@@ -77,7 +77,7 @@ Deployment on AWS generally takes about 300 - 400 seconds on AWS.
 ## Start using Kubernetes
 
 Now that Kubernetes fully deployed, you can follow the
-[GuestBook example](Guestbook_how_to.md) instructions that start an
+[GuestBook example](user-guestbook-how-to.html) instructions that start an
 application in Kubernetes. Juju has done the work of provisioning the
 virtual machines, and the charms install and configure the Kubernetes
 software.  You should be able to run through the Guestbook example and
