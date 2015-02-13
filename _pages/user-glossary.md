@@ -18,6 +18,12 @@ of a service. By concerns we mean: configuration management, how it interfaces
 with other services, lifecycle management, and peering/scaling up and down.
 
 
+##### Bundle
+A bundle is a set of charms and relations with in Juju.  A bundle is a 
+specific configuration corresponding relations that can be deployed together 
+in one step.  Bundles are defined in text files in YAML format. 
+
+
 ##### Relation
 Relations are a bi-directional communication pipeline, written declaratively in
 charms in a 'provides' and 'requires' stanza. These relational interfaces
