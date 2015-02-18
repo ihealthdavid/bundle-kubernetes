@@ -2,8 +2,8 @@ omit:
 - .git
 - .gitignore
 - .gitmodules
-- revision
-- local.yaml
-- develop.yaml
+- kubecharm.egg-info
 - release
+- revision
+- specs
 - trusty
