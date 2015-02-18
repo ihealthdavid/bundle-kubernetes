@@ -14,22 +14,23 @@ class BundleIntegrationTest(unittest.TestCase):
     """ This class creates an integration test for deploying a bundle. """
     bundle = None
 
-    def setUpClass(self):
+    @classmethod
+    def setUpClass(cls):
         """ This method deploys the bundle one level up. """
-        if self.bundle:
-            self.bundle_path = os.path.abspath(self.bundle)
+        if cls.bundle:
+            cls.bundle_path = os.path.abspath(cls.bundle)
         else:
-            self.bundle_path = os.path.join(os.path.dirname(__file__),
-                                            '..',
-                                            'bundles.yaml')
+            cls.bundle_path = os.path.join(os.path.dirname(__file__),
+                                           '..',
+                                           'bundles.yaml')
 
-        self.deployment = amulet.Deployment()
-        with open(self.bundle_path, 'r') as bundle_file:
+        cls.deployment = amulet.Deployment()
+        with open(cls.bundle_path, 'r') as bundle_file:
             contents = yaml.safe_load(bundle_file)
-            self.deployment.load(contents)
+            cls.deployment.load(contents)
         try:
-            self.deployment.setup(seconds)
-            self.deployment.wait()
+            cls.deployment.setup(seconds)
+            cls.deployment.wait()
         except Exception:
             message = 'Unable to set up environment in %d seconds.' % seconds
             amulet.raise_status(amulet.FAIL, msg=message)
