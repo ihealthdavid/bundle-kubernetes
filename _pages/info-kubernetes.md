@@ -9,9 +9,6 @@ Kubernetes is an open source system for managing containerized applications
 across multiple hosts, providing basic mechanisms for deployment, maintenance,
 and scaling of applications.
 
-
-
-
 #### User Documentation
 
 <ul>
@@ -27,4 +24,3 @@ and scaling of applications.
     <p><a href="{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></p>
 {% endfor %}
 </ul>
-
