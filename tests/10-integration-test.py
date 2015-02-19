@@ -4,10 +4,11 @@
 
 import amulet
 import os
+import requests
 import unittest
 import yaml
 
-seconds = 1200
+seconds = 1800
 
 
 class BundleIntegrationTest(unittest.TestCase):
@@ -16,14 +17,19 @@ class BundleIntegrationTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        """ This method deploys the bundle one level up. """
-        if cls.bundle:
-            cls.bundle_path = os.path.abspath(cls.bundle)
-        else:
-            cls.bundle_path = os.path.join(os.path.dirname(__file__),
-                                           '..',
-                                           'bundles.yaml')
+        """ This method deploys the bundle. """
 
+        if not cls.bundle:
+            # Get the relative bundle path from the environment variable.
+            cls.bundle = os.getenv('BUNDLE', 'bundles.yaml')
+        # Create a path to the bundle based on this file's location.
+        cls.bundle_path = os.path.join(os.path.dirname(__file__),
+                                       '..',
+                                       cls.bundle)
+        # Normalize the path to the bundle.
+        cls.bundle_path = os.path.abspath(cls.bundle_path)
+
+        print('Deploying bundle: {0}'.format(cls.bundle_path))
         cls.deployment = amulet.Deployment()
         with open(cls.bundle_path, 'r') as bundle_file:
             contents = yaml.safe_load(bundle_file)
@@ -59,11 +65,18 @@ class BundleIntegrationTest(unittest.TestCase):
         minion_relation = km.relation('minions-api', 'kubernetes:api')
         return etcd_relation, master_relation, minion_relation
 
+    def test_2_http(self):
+        """ Test that kubernetes is responding to HTTP requests. """
+        km = self.deployment.sentry.unit['kubernetes-master/0']
+        km_address = km.info['public-address']
+        km_url = 'http://{0}:8080'.format(km_address)
+        print(km_url)
+        response = requests.get(km_url)
+        response.raise_for_status()
+        if 'Kubernetes' not in response.text:
+            message = 'Kubernetes is not responding at {0}.'.format(km_url)
+            amulet.raise_status(amulet.FAIL, msg=message)
+
 
 if __name__ == '__main__':
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-b', '--bundle', default=None)
-    pargs = parser.parse_args()
-    BundleIntegrationTest.bundle = pargs.bundle
     unittest.main()
