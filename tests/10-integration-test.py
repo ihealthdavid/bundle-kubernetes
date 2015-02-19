@@ -30,10 +30,12 @@ class BundleIntegrationTest(unittest.TestCase):
             cls.deployment.load(contents)
         try:
             cls.deployment.setup(seconds)
-            cls.deployment.wait()
-        except Exception:
+            cls.deployment.sentry.wait()
+        except amulet.helpers.TimeoutError:
             message = 'Unable to set up environment in %d seconds.' % seconds
             amulet.raise_status(amulet.FAIL, msg=message)
+        except:
+            raise
 
     def kunits(self):
         """ Return a tuple of the relevant units. """
