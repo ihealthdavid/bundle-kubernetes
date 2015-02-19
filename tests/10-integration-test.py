@@ -4,10 +4,11 @@
 
 import amulet
 import os
+import requests
 import unittest
 import yaml
 
-seconds = 1200
+seconds = 1800
 
 
 class BundleIntegrationTest(unittest.TestCase):
@@ -28,7 +29,7 @@ class BundleIntegrationTest(unittest.TestCase):
         # Normalize the path to the bundle.
         cls.bundle_path = os.path.abspath(cls.bundle_path)
 
-        print("Deploying bundle: {0}".format(cls.bundle_path))
+        print('Deploying bundle: {0}'.format(cls.bundle_path))
         cls.deployment = amulet.Deployment()
         with open(cls.bundle_path, 'r') as bundle_file:
             contents = yaml.safe_load(bundle_file)
@@ -64,11 +65,18 @@ class BundleIntegrationTest(unittest.TestCase):
         minion_relation = km.relation('minions-api', 'kubernetes:api')
         return etcd_relation, master_relation, minion_relation
 
+    def test_2_http(self):
+        """ Test that kubernetes is responding to HTTP requests. """
+        km = self.deployment.sentry.unit['kubernetes-master/0']
+        km_address = km.info['public-address']
+        km_url = 'http://{0}:8080'.format(km_address)
+        print(km_url)
+        response = requests.get(km_url)
+        response.raise_for_status()
+        if 'Kubernetes' not in response.text:
+            message = 'Kubernetes is not responding at {0}.'.format(km_url)
+            amulet.raise_status(amulet.FAIL, msg=message)
+
 
 if __name__ == '__main__':
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-b', '--bundle', default=None)
-    options = parser.parse_args()
-    BundleIntegrationTest.bundle = options.bundle
     unittest.main()
