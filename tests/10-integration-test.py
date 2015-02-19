@@ -16,14 +16,19 @@ class BundleIntegrationTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        """ This method deploys the bundle one level up. """
-        if cls.bundle:
-            cls.bundle_path = os.path.abspath(cls.bundle)
-        else:
-            cls.bundle_path = os.path.join(os.path.dirname(__file__),
-                                           '..',
-                                           'bundles.yaml')
+        """ This method deploys the bundle. """
 
+        if not cls.bundle:
+            # Get the relative bundle path from the environment variable.
+            cls.bundle = os.getenv('BUNDLE', 'bundles.yaml')
+        # Create a path to the bundle based on this file's location.
+        cls.bundle_path = os.path.join(os.path.dirname(__file__),
+                                       '..',
+                                       cls.bundle)
+        # Normalize the path to the bundle.
+        cls.bundle_path = os.path.abspath(cls.bundle_path)
+
+        print("Deploying bundle: {0}".format(cls.bundle_path))
         cls.deployment = amulet.Deployment()
         with open(cls.bundle_path, 'r') as bundle_file:
             contents = yaml.safe_load(bundle_file)
@@ -64,6 +69,6 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('-b', '--bundle', default=None)
-    pargs = parser.parse_args()
-    BundleIntegrationTest.bundle = pargs.bundle
+    options = parser.parse_args()
+    BundleIntegrationTest.bundle = options.bundle
     unittest.main()
