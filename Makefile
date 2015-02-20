@@ -7,8 +7,9 @@ virtualenv:
 	.venv/bin/pip install pytest flake8 mock pyyaml charmhelpers charm-tools ecdsa bundletester
 
 lint: virtualenv
-	@.venv/bin/flake8 tests
-	@.venv/bin/juju-bundle proof
+	@echo Inspecting the code for fixable problems...
+	.venv/bin/flake8 tests
+	.venv/bin/juju-bundle proof
 
 test: virtualenv
 	@echo Starting tests...

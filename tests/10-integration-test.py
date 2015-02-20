@@ -4,7 +4,6 @@
 
 import amulet
 import os
-#import requests
 import unittest
 import yaml
 
