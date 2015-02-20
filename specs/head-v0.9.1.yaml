@@ -36,7 +36,7 @@ kubernetes:
       charm: kubernetes-0
       num_units: 2
       options:
-        version: v0.9.3
+        version: v0.9.1
       to:
       - flannel
       - flannel
@@ -46,5 +46,6 @@ kubernetes:
         gui-y: '0'
       branch: https://github.com/whitmo/charm-kubernetes-master.git
       charm: kubernetes-master-0
+      expose: true
       options:
-        version: v0.9.3
+        version: v0.9.1

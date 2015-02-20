@@ -16,14 +16,12 @@ kubernetes:
       annotations:
         gui-x: '300'
         gui-y: '0'
-      branch: https://github.com/whitmo/etcd-charm.git
-      charm: etcd-0
+      charm: cs:~kubernetes/trusty/etcd-1
     flannel:
       annotations:
         gui-x: '0'
         gui-y: '0'
-      branch: https://github.com/whitmo/flannel-charm.git
-      charm: flannel-0
+      charm: cs:~kubernetes/trusty/flannel-1
       num_units: 2
       options:
         container_type: docker
@@ -32,11 +30,10 @@ kubernetes:
       annotations:
         gui-x: '300'
         gui-y: '300'
-      branch: https://github.com/whitmo/charm-kubernetes.git
-      charm: kubernetes-0
+      charm: cs:~kubernetes/trusty/kubernetes-1
       num_units: 2
       options:
-        version: v0.10.0
+        version: v0.9.1
       to:
       - flannel
       - flannel
@@ -44,7 +41,7 @@ kubernetes:
       annotations:
         gui-x: '600'
         gui-y: '0'
-      branch: https://github.com/whitmo/charm-kubernetes-master.git
-      charm: kubernetes-master-0
+      charm: cs:~kubernetes/trusty/kubernetes-master-2
+      expose: true
       options:
-        version: v0.10.0
+        version: v0.9.1

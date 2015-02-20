@@ -99,7 +99,7 @@ def jenkins_job(parser):
                         '--bundle', action='store',
                         help="Relative path for a bundle to run",
                         type=path,
-                        default='./bundles.yaml')
+                        default='')
 
     parser.add_argument(
         'url',
