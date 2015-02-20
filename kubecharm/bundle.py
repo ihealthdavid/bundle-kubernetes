@@ -87,10 +87,9 @@ class Maker(Base):
             os.makedirs(output_directory)
         # Generate a bundle for each release.
         for release in self.config['kubernetes-releases']:
-            label = self.config['kubernetes-releases'][release]['label']
             for prefix in self.config['bundle_prefixes']:
                 template = self.read_template()
-                bundle_name = '{0}-{1}-{2}.yaml'.format(prefix, label, release)
+                bundle_name = '{0}-{1}.yaml'.format(prefix, release)
                 bundle = self.configure_bundle(template, prefix, release)
                 bundle_path = os.path.join(output_directory, bundle_name)
                 print(bundle_path)
@@ -142,12 +141,10 @@ class TestRunner(Base):
         repository = self.config['bundle_repository']
         # Generate a call to a bundle of each release.
         for release in self.config['kubernetes-releases']:
-            label = self.config['kubernetes-releases'][release]['label']
             # Generate one bundle for each prefix.
             for prefix in self.config['bundle_prefixes']:
                 # The versioned bundles are stored in the specs directory.
-                bundle_name = 'specs/{0}-{1}-{2}.yaml'.format(prefix, label,
-                                                              release)
+                bundle_name = 'specs/{0}-{1}.yaml'.format(prefix, release)
                 message = 'Running job on {0} for {1} with bundle {2}'
                 print(message.format(env, repository, bundle_name))
                 r = ci.run_job(token, repository, env, '', '', bundle_name, api)

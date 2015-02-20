@@ -2,7 +2,7 @@ kubernetes:
   series: trusty
   services:
     "kubernetes-master":
-      charm: cs:~kubernetes/trusty/kubernetes-master-2
+      charm: cs:~kubernetes/trusty/kubernetes-master-3
       annotations:
         "gui-x": "600"
         "gui-y": "0"
@@ -17,7 +17,7 @@ kubernetes:
         "gui-x": "0"
         "gui-y": "0"
     kubernetes:
-      charm: cs:~kubernetes/trusty/kubernetes-1
+      charm: cs:~kubernetes/trusty/kubernetes-2
       num_units: 2
       to: [flannel, flannel]
       annotations:
