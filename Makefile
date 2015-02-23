@@ -19,6 +19,15 @@ func_test: virtualenv
 	@echo functional tests...
 	@.venv/bin/bundletester -v -F -l DEBUG
 
+release: check-path
+	@.venv/bin/pip install git-vendor
+	@.venv/bin/git-vendor sync -d $KUBERNETES_BUNDLE_BZR
+
+check-path:
+	ifndef KUBERNETES_BUNDLE_BZR
+		$(error KUBERNETES_BUNDLE_BZR is undefined)
+	endif
+
 clean:
 	rm -rf .venv
 	find -name *.pyc -delete
