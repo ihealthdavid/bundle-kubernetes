@@ -40,7 +40,8 @@ main = cli.run
 @cli.command('kubecharm.bundle:test_all_bundles')
 def test_all_bundles(parser):
     """
-    Trigger a bundle test job on for each bundle defined in the
+    Set up the command line arguments for the test-all-bundles command.
+    The command triggers a bundle test job on for each bundle defined in the
     specs/matrix.yaml file.
     """
     default_matrix = 'specs/matrix.yaml'
@@ -58,9 +59,9 @@ def test_all_bundles(parser):
 @cli.command('kubecharm.bundle:generate')
 def generate_bundles(parser):
     """
-    Set up the command l
-    Generate all the combinations of bundles from the matrix file, basing the
-    bundle on the template file, storing the output in a directory.
+    Set up the command line arguments for the generate-bundles subcommand.
+    The command generates all the combinations of bundles from the matrix file,
+    basing the bundle on the template file, storing the output in a directory.
     """
     default_matrix = 'specs/matrix.yaml'
     default_template = 'bundles.yaml'
@@ -96,7 +97,8 @@ def generate_bundles(parser):
 @cli.command('kubecharm.ci:jenkins_job')
 def jenkins_job(parser):
     """
-    Trigger a charm test build on the remote jenkins slave
+    Set up the command line arguments for the jenkins-job subcommand.
+    The command triggers a charm or bundle test build on a jenkins server.
     """
     api_url = 'http://juju-ci.vapour.ws:8080/job/charm-bundle-test-wip/buildWithParameters'
 
