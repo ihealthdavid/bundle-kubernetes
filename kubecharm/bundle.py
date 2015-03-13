@@ -43,11 +43,7 @@ class Maker(Base):
         flannel = template['kubernetes']['services']['flannel']
 
         # Set the version configuration value on the kubernetes-master charm.
-        #master['options']['version'] = release
         master['options'] = {'version': release}
-        # Set the version configuration value on the kubernetes charm.
-        #minion['options']['version'] = release
-        minion['options'] = {'version': release}
 
         if 'head' == prefix:
             # To get Juju to reference github branches change charm and branch:
@@ -147,7 +143,8 @@ class TestRunner(Base):
                 bundle_name = 'specs/{0}-{1}.yaml'.format(prefix, release)
                 message = 'Running job on {0} for {1} with bundle {2}'
                 print(message.format(env, repository, bundle_name))
-                r = ci.run_job(token, repository, env, '', '', bundle_name, api)
+                r = ci.run_job(token, repository, env, '', '', '', bundle_name, 
+                    api)
                 print(r.url)
 
 
