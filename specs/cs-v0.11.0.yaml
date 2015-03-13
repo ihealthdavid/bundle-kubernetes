@@ -30,10 +30,8 @@ kubernetes:
       annotations:
         gui-x: '300'
         gui-y: '300'
-      charm: cs:~kubernetes/trusty/kubernetes-1
+      charm: cs:~kubernetes/trusty/kubernetes-2
       num_units: 2
-      options:
-        version: v0.11.0
       to:
       - flannel
       - flannel
@@ -41,7 +39,7 @@ kubernetes:
       annotations:
         gui-x: '600'
         gui-y: '0'
-      charm: cs:~kubernetes/trusty/kubernetes-master-2
+      charm: cs:~kubernetes/trusty/kubernetes-master-3
       expose: true
       options:
         version: v0.11.0

@@ -35,8 +35,6 @@ kubernetes:
       branch: https://github.com/whitmo/charm-kubernetes.git
       charm: kubernetes-0
       num_units: 2
-      options:
-        version: v0.9.1
       to:
       - flannel
       - flannel
@@ -48,4 +46,4 @@ kubernetes:
       charm: kubernetes-master-0
       expose: true
       options:
-        version: v0.9.1
+        version: v0.12.1

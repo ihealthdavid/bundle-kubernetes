@@ -4,10 +4,10 @@ bundle_prefixes:
 bundle_repository: gh:whitmo/bundles-kubernetes
 charms:
     kubernetes-master:
-        launchpad: cs:~kubernetes/trusty/kubernetes-master-2
+        launchpad: cs:~kubernetes/trusty/kubernetes-master-3
         github: https://github.com/whitmo/charm-kubernetes-master.git
     kubernetes:
-         launchpad: cs:~kubernetes/trusty/kubernetes-1
+         launchpad: cs:~kubernetes/trusty/kubernetes-2
          github: https://github.com/whitmo/charm-kubernetes.git
     flannel:
          launchpad: cs:~kubernetes/trusty/flannel-1
@@ -20,15 +20,15 @@ environments: aws,hp,azure,joyent
 
 kubernetes-releases:
 # https://github.com/GoogleCloudPlatform/kubernetes/releases
-    v0.11.0:
+    v0.12.1:
         label: pre-release
-        sha1: aa884b8200681d3bb8ca0f12398c7424942be500
-    v0.10.1:
+        sha1: bb9463de502009cfce424afcbbc1a35e0c236a93
+    v0.12.0:
+        label: pre-release
+        sha1: 10d85777784f901a7476e642e7bab1776a834900
+    v0.11.0:
         label: latest-release
-        sha1: 7b8e9a9a4178672f022fe37ff7962d829d2f6dfe
+        sha1: aa884b8200681d3bb8ca0f12398c7424942be500
     v0.10.0:
         label: pre-release
         sha1: f9ec2eec8b3b0e02b616c2105182e7ebf53e323e
-    v0.9.1:
-        label: pre-release
-        sha1: 28f1a37f9a09bc07fe6310af12713c3817d46700
