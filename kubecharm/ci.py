@@ -11,7 +11,7 @@ def handle_token(config, configfp):
     if token is None:
         token = prompt.query('You must enter a Jenkins token:')
         if token is None:
-            raise RuntimeError("You must have a token.")
+            raise RuntimeError("A token is required to use the API.")
 
         store = prompt.yn('Would you like to store your token?')
         if store is True:
@@ -22,15 +22,16 @@ def handle_token(config, configfp):
     return token
 
 
-def run_job(token, url, envs, callback, job, bundle, jenkins_api):
+def run_job(token, url, envs, callback, config, job, bundle, jenkins_api):
     """ Allow the running of jobs from other python methods.  """
     params = {
+        'bundle': bundle,
+        'callback_url': callback,
+        'config': config,
+        'envs': envs,
+        'job_id': job,
         'token': token,
         'url': url,
-        'envs': envs,
-        'callback_url': callback,
-        'job_id': job,
-        'bundle': bundle
     }
     response = requests.get(jenkins_api, params=params)
     return response
@@ -39,8 +40,11 @@ def run_job(token, url, envs, callback, job, bundle, jenkins_api):
 def jenkins_job(ctx, args, handle_token=handle_token):
     """ Get the token from config and the arguments to call the job. """
     token = handle_token(args.config, path(ctx['resources'].path))
-    response = run_job(token, args.url, args.envs, args.callback, args.job,
-                       args.bundle, args.jenkins_api)
+    response = run_job(token, args.url, args.envs, args.callback,
+                       args.description, args.job, args.bundle,
+                       args.jenkins_api)
     if not response.ok:
+        print("ERROR: The response back from the API was not OK!")
+        print(response)
         sys.exit(1)
     print(response.url)
