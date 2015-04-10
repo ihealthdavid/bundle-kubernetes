@@ -1,4 +1,4 @@
-kubernetes:
+kubernetes-dev:
   series: trusty
   services:
     kubernetes-master:
@@ -23,7 +23,7 @@ kubernetes:
         "gui-x": "300"
         "gui-y": "300"
     etcd:
-      charm: cs:~kuberentes/trusty/etcd
+      charm: cs:~kubernetes/trusty/etcd
       annotations:
         "gui-x": "300"
         "gui-y": "0"
