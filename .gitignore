@@ -4,3 +4,4 @@
 *~
 /kubecharm.egg-info/
 *.pyc
+.venv
