@@ -1,4 +1,4 @@
-kubernetes-dev:
+kubernetes-develop:
   series: trusty
   services:
     kubernetes-master:
