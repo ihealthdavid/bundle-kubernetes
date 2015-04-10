@@ -34,7 +34,6 @@ Deploy Kubernetes onto any cloud and orchestrated directly in the Juju
 Graphical User Interface using `juju quickstart`:
 
     juju quickstart -i https://raw.githubusercontent.com/whitmo/bundle-kubernetes/master/bundles.yaml
-    juju expose kubernetes-master
 
 The command above does few things for you:
 
@@ -80,11 +79,9 @@ for more details of what can be done with the command line tool.
 
 ### Scaling up the cluster
 
-You can add capacity by adding more flannel units and Kubernetes minions:
+You can add capacity by adding more Docker units:
 
-     juju add-unit flannel
-     juju add-unit kubernetes --to # (the id that flannel is assigned)
-
+     juju add-unit docker
 
 ### Known Limitations
 
@@ -111,11 +108,15 @@ The minions are the servers that perform the work.  Minions must
 communicate with the master and run the workloads that are assigned to
 them.
 
-### Flannel
+### Flannel-docker
 
 Flannel provides individual subnets for each machine in the cluster by
 creating a
 [software defined networking](http://en.wikipedia.org/wiki/Software-defined_networking).
+
+### Docker
+
+An open platform for distributed applications for developers and sysadmins.
 
 ### Etcd
 
@@ -170,12 +171,8 @@ github.
     mkdir -p ~/charms/trusty
     git clone https://github.com/whitmo/kubernetes-charm.git ~/charms/trusty/kubernetes
     git clone https://github.com/whitmo/kubernetes-master-charm.git ~/charms/trusty/kubernetes-master
-    git clone https://github.com/whitmo/etcd-charm.git ~/charms/trusty/etcd-charm
-    git clone https://github.com/whitmo/flannel-charm.git ~/charms/trusty/flannel-charm
 
     juju quickstart specs/develop.yaml
-    juju expose kubernetes-master
-
 
 ## How to contribute
 
@@ -187,7 +184,8 @@ Send us pull requests!  We'll send you a cookie if they include tests and docs.
  - [kubernetes-master charm on Github](https://github.com/whitmo/charm-kubernetes-master)
  - [kubernetes charm on GitHub](https://github.com/whitmo/charm-kubernetes)
  - [etcd charm on GitHub](https://github.com/whitmo/etcd-charm)
- - [Flannel charm on GitHub](https://github.com/whitmo/flannel-charm)
+ - [Flannel charm on GitHub](https://github.com/chuckbutler/docker-flannel-charm)
+ - [Docker charm on GitHub](https://github.com/chuckbutler/docker-charm)
 
 More information about the
 [Kubernetes project](https://github.com/GoogleCloudPlatform/kubernetes)
