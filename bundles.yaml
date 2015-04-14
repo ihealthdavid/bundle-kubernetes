@@ -1,7 +1,7 @@
-kubernetes:
+kubernetes-cluster:
   services:
     "kubernetes-master":
-      charm: cs:~kubernetes/trusty/kubernetes-master-4
+      charm: cs:~kubernetes/trusty/kubernetes-master-5
       annotations:
         "gui-x": "600"
         "gui-y": "0"
@@ -20,7 +20,7 @@ kubernetes:
         "gui-x": "0"
         "gui-y": "300"
     kubernetes:
-      charm: cs:~kubernetes/trusty/kubernetes-3
+      charm: cs:~kubernetes/trusty/kubernetes-5
       annotations:
         "gui-x": "300"
         "gui-y": "300"
