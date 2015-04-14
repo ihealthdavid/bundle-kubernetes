@@ -1,34 +1,31 @@
 bundle_prefixes:
     - cs
     - head
-bundle_repository: gh:whitmo/bundles-kubernetes
+bundle_repository: gh:whitmo/bundle-kubernetes
 charms:
     kubernetes-master:
-        launchpad: cs:~kubernetes/trusty/kubernetes-master-3
+        launchpad: cs:~kubernetes/trusty/kubernetes-master-5
         github: https://github.com/whitmo/charm-kubernetes-master.git
     kubernetes:
-         launchpad: cs:~kubernetes/trusty/kubernetes-2
+         launchpad: cs:~kubernetes/trusty/kubernetes-5
          github: https://github.com/whitmo/charm-kubernetes.git
-    flannel:
-         launchpad: cs:~kubernetes/trusty/flannel-1
-         github: https://github.com/whitmo/flannel-charm.git
+    flannel-docker:
+         launchpad: cs:trusty/flannel-docker-1
+         github: https://github.com/chuckbutler/flannel-docker-charm.git
     etcd:
          launchpad: cs:~kubernetes/trusty/etcd-1
          github: https://github.com/whitmo/etcd-charm.git
+    docker:
+        launchpad: cs:trusty/docker-2
+        github: https://github.com/chuckbutler/docker-charm.git
 
 environments: aws,hp,azure,joyent
 
 kubernetes-releases:
 # https://github.com/GoogleCloudPlatform/kubernetes/releases
-    v0.12.1:
+    v0.15.0:
         label: pre-release
-        sha1: bb9463de502009cfce424afcbbc1a35e0c236a93
-    v0.12.0:
-        label: pre-release
-        sha1: 10d85777784f901a7476e642e7bab1776a834900
-    v0.11.0:
+        sha1: 80ca43c637dd53e8e7fc25ed66fc26a2dbdae10c
+    v0.14.2:
         label: latest-release
-        sha1: aa884b8200681d3bb8ca0f12398c7424942be500
-    v0.10.0:
-        label: pre-release
-        sha1: f9ec2eec8b3b0e02b616c2105182e7ebf53e323e
+        sha1: 9e6ebd57e0e993a7154e8505977207873f2e9493
