@@ -13,7 +13,7 @@ charms:
          launchpad: cs:trusty/flannel-docker-1
          github: https://github.com/chuckbutler/flannel-docker-charm.git
     etcd:
-         launchpad: cs:~kubernetes/trusty/etcd-1
+         launchpad: cs:~kubernetes/trusty/etcd-2
          github: https://github.com/whitmo/etcd-charm.git
     docker:
         launchpad: cs:trusty/docker-2
