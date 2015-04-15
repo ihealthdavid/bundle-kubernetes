@@ -28,7 +28,7 @@ kubernetes-cluster:
       annotations:
         gui-x: '300'
         gui-y: '0'
-      charm: cs:~kubernetes/trusty/etcd-1
+      charm: cs:~kubernetes/trusty/etcd-2
     flannel-docker:
       annotations:
         gui-x: '0'
