@@ -1,5 +1,5 @@
 """
-The bundle maker and bundle runner logic are contained in this module.
+The bundle maker and bundle runner logic are contained in this python module.
 """
 import os
 from path import path
@@ -27,7 +27,7 @@ class Maker(Base):
 
     def __init__(self, matrix, template):
         """
-        The Maker class requires a template file to base the bundle on.
+        The Maker class requires a template file (bundle) to base the bundle on.
         """
         Base.__init__(self, matrix)
         self.template = template
@@ -36,11 +36,13 @@ class Maker(Base):
         """
         Configure the bundle template for the specific prefix and release.
         """
-        # Get a reference to the charms in the template.
-        master = template['kubernetes']['services']['kubernetes-master']
-        minion = template['kubernetes']['services']['kubernetes']
-        etcd = template['kubernetes']['services']['etcd']
-        flannel = template['kubernetes']['services']['flannel']
+        bundle_name = template.keys()[0]
+        # Get a reference to the charms in the template bundle.
+        master = template[bundle_name]['services']['kubernetes-master']
+        minion = template[bundle_name]['services']['kubernetes']
+        etcd = template[bundle_name]['services']['etcd']
+        flannel = template[bundle_name]['services']['flannel-docker']
+        docker = template[bundle_name]['services']['docker']
 
         # Set the version configuration value on the kubernetes-master charm.
         master['options'] = {'version': release}
@@ -55,14 +57,17 @@ class Maker(Base):
             minion['branch'] = self.config['charms']['kubernetes']['github']
             etcd['charm'] = 'etcd-0'
             etcd['branch'] = self.config['charms']['etcd']['github']
-            flannel['charm'] = 'flannel-0'
-            flannel['branch'] = self.config['charms']['flannel']['github']
+            flannel['charm'] = 'flannel-docker-0'
+            flannel['branch'] = self.config['charms']['flannel-docker']['github']
+            docker['charm'] = 'docker-0'
+            docker['branch'] = self.config['charms']['docker']['github']
         else:
             # Launchpad definitions only need the charm definition changed.
             master['charm'] = self.config['charms']['kubernetes-master']['launchpad']
             minion['charm'] = self.config['charms']['kubernetes']['launchpad']
             etcd['charm'] = self.config['charms']['etcd']['launchpad']
-            flannel['charm'] = self.config['charms']['flannel']['launchpad']
+            flannel['charm'] = self.config['charms']['flannel-docker']['launchpad']
+            docker['charm'] = self.config['charms']['docker']['launchpad']
         return template
 
     @classmethod
@@ -143,7 +148,7 @@ class TestRunner(Base):
                 bundle_name = 'specs/{0}-{1}.yaml'.format(prefix, release)
                 message = 'Running job on {0} for {1} with bundle {2}'
                 print(message.format(env, repository, bundle_name))
-                r = ci.run_job(token, repository, env, '', '', '', bundle_name, 
+                r = ci.run_job(token, repository, env, '', '', '', bundle_name,
                     api)
                 print(r.url)
 
