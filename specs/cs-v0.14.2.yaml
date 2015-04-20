@@ -22,8 +22,6 @@ kubernetes-cluster:
         gui-y: '0'
       charm: cs:trusty/docker-2
       num_units: 2
-      options:
-        latest: true
     etcd:
       annotations:
         gui-x: '300'

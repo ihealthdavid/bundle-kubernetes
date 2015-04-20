@@ -23,8 +23,6 @@ kubernetes-cluster:
       branch: https://github.com/chuckbutler/docker-charm.git
       charm: docker-0
       num_units: 2
-      options:
-        latest: true
     etcd:
       annotations:
         gui-x: '300'
