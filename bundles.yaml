@@ -9,8 +9,6 @@ kubernetes-cluster:
     docker:
       charm: cs:trusty/docker-2
       num_units: 2
-      options:
-        latest: true
       annotations:
         "gui-x": "0"
         "gui-y": "0"
